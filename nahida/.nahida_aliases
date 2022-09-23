@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# nahida
+alias nahida='sudo apt update && sudo apt upgrade'
+alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+
+# util
+alias path='echo -e ${PATH//:/\\n} | sort'
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# ls (GNU and MacOS support)
+if ls --color > /dev/null 2>&1; then
+    colorflag='--color=auto'
+else
+    colorflag='-G'
+fi
+alias ls="command ls $colorflag"
+unset colorflag
+alias ll='ls -lF'
+alias la='ls -laF'
+alias la-='ls -laF | grep --color=never ^-'
+alias lad='ls -laF | grep --color=never ^d'
+alias lal='ls -laF | grep --color=never ^l'
+
+# grep
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'

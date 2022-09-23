@@ -1,0 +1,4 @@
+#!/bin/sh
+
+. "$HOME/.nahida_aliases"
+. "$HOME/.nahida_variables"

@@ -5,13 +5,10 @@ alias path='echo -e ${PATH//:/\\n} | sort'
 
 # ls (GNU and MacOS support)
 if ls --color > /dev/null 2>&1; then
-    colorflag='--color=auto'
+    alias ls="command ls --color=auto"
 else
-    colorflag='-G'
+    alias ls="command ls -G"
 fi
-alias ls="command ls $colorflag"
-unset colorflag
-
 alias ll='ls -lF'
 alias la='ls -laF'
 alias la-='ls -laF | grep --color=never ^-'

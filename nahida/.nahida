@@ -5,9 +5,9 @@ case $- in
       *) return;;
 esac
 
-if [ -x "$HOME"/.nahida.d ]; then
-    for file in "$HOME"/.nahida.d/*; do
-        [ -r "$file" ] && . "$file"
+if [ -x "${HOME}"/.nahida.d ]; then
+    for file in "${HOME}"/.nahida.d/*; do
+        [ -r "${file}" ] && . "${file}"
     done
     unset file
 fi

@@ -1,13 +1,13 @@
 #!/bin/sh
 
+# Don't run in non-interactive shells
 case $- in
     *i*) ;;
       *) return;;
 esac
 
-if [ -x "${HOME}"/.nahida.d ]; then
-    for file in "${HOME}"/.nahida.d/*; do
+if [ -x "${HOME}/.nahida.d" ]; then
+    for file in "${HOME}/.nahida.d/"*; do
         [ -r "${file}" ] && . "${file}"
     done
-    unset file
 fi

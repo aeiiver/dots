@@ -2,33 +2,36 @@
 
 if ! command -v stow 1>/dev/null; then
     echo "Stow is required to run this script."
-    return
+    exit 1
 fi
 
 usage () {
     cat 1>&2 << HEREDOC
-commands:
-    s     Stow all packages
-    d     Unstow all packages
+Usage: $0 <command>
+
+Commands:
+    s, stow      Stow all packages
+    d, delete    Unstow all packages
 HEREDOC
     exit 1
 }
 
 case "$1" in
-    d)
-        action="Unstow"
-        stow_opt="-D"
-        ;;
-    s)
+    s|stow)
         action="Stow"
-        stow_opt="-S"
-        ;;
+        stow_opt="-S";;
+    d|delete)
+        action="Unstow"
+        stow_opt="-D";;
+    "")
+        usage;;
     *)
+	echo "$0: unknown command '$1'"
         usage;;
 esac
 
 yellow="\033[0;33m"
-yellowbright="\033[1;33m"
+yellowbold="\033[1;33m"
 reset="\033[0m"
 
 for package in */; do
@@ -37,14 +40,13 @@ for package in */; do
     echo "${action}ing '${package}' will do:"
     echo "${yellow}${preview}" | grep -v ^WARNING
 
-    printf "${reset}${action} package '%s'? (Y/n) " "${package}"
+    printf "${reset}${action} package '${package}'? ([Y]es/[n]o) "
     read -r yn
 
     case ${yn} in
-        [yY]*|"")
-            printf "${yellowbright}"
-            stow "${stow_opt}" -v "${package}"
-            ;;
+        [yY]es|[yY]e|[yY]|"")
+            printf "${yellowbold}"
+            stow "${stow_opt}" -v "${package}";;
         *);;
     esac
     echo "${reset}"

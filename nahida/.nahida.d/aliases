@@ -5,9 +5,9 @@ alias path='echo -e ${PATH//:/\\n} | sort'
 
 # ls (GNU and MacOS support)
 if ls --color > /dev/null 2>&1; then
-    alias ls="command ls --color=auto"
+    alias ls='command ls --color=auto'
 else
-    alias ls="command ls -G"
+    alias ls='command ls -G'
 fi
 alias ll='ls -lF'
 alias la='ls -laF'
@@ -16,6 +16,6 @@ alias lad='ls -laF | grep --color=never ^d'
 alias lal='ls -laF | grep --color=never ^l'
 
 # grep
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
+alias egrep='grep -E --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
+alias fgrep='grep -F --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'

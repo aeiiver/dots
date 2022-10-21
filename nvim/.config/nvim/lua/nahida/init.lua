@@ -1,3 +1,4 @@
-require("nahida.set")
-require("nahida.keymap")
-require("nahida.packer")
+require "nahida.vars"
+require "nahida.opts"
+require "nahida.keys"
+require "nahida.packer"

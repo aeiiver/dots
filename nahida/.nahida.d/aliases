@@ -1,10 +1,7 @@
 #!/bin/sh
 
-# util
-alias path='echo -e ${PATH//:/\\n} | sort'
-
 # ls (GNU and MacOS support)
-if ls --color > /dev/null 2>&1; then
+if ls --color 1>/dev/null 2>&1; then
     alias ls='command ls --color=auto'
 else
     alias ls='command ls -G'
@@ -19,3 +16,10 @@ alias lal='ls -laF | grep --color=never ^l'
 alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
 alias egrep='grep -E --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
 alias fgrep='grep -F --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
+
+# utils
+alias lspath='echo $PATH | sed -e 's,:,\n,g' | sort'
+
+# shell RCs
+alias bashrc='$EDITOR $HOME/.bashrc'
+alias zshrc='$EDITOR $HOME/.zshrc'

@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# Don't run in non-interactive shells
 case $- in
     *i*) ;;
       *) return;;

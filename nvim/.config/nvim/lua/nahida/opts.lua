@@ -27,6 +27,6 @@ opt.ignorecase = true
 opt.smartcase = true
 
 -- appearance
-opt.syntax = 'on'
+opt.syntax = 'off' -- treesitter is doing it for you
 opt.termguicolors = true
 opt.cmdheight = 1

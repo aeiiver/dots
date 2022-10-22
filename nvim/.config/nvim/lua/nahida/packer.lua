@@ -4,22 +4,34 @@ return require('packer').startup(function(use)
     -- packer
     use 'wbthomason/packer.nvim'
 
-    -- fuzzy finder
+    -- utilities
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        branch = '0.1.x',
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
+    use { 'mbbill/undotree' }
 
-    -- local history
+    -- YEP COQ
     use {
-        'dinhhuy258/vim-local-history',
-        branch = 'master',
-        run = ':UpdateRemotePlugins'
-    } 
+        'ms-jpq/coq_nvim',
+        branch = 'coq'
+    }
+    use {
+        'ms-jpq/coq.artifacts',
+        branch = 'artifacts'
+    }
 
     -- appearance
     use {
-        'nvim-lualine/lualine.nvim'
-        --requires = { {'kyazdani42/nvim-web-devicons', opt = true} }
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            require('nvim-treesitter.install').update { with_sync = true }
+        end,
     }
+    use {
+        'nvim-lualine/lualine.nvim',
+        --requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
+    use { 'jacoborus/tender.vim' }
 end)

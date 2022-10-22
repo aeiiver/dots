@@ -1,1 +1,1 @@
-require('nahida')
+require 'nahida'

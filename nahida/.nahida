@@ -1,12 +1,17 @@
 #!/bin/sh
 
+# Add the following line in your shell RCs
+# . "${HOME}/dots/nahida/.nahida"
+
 case $- in
     *i*) ;;
       *) return;;
 esac
 
-if [ -x "${HOME}/.nahida.d" ]; then
-    for file in "${HOME}/.nahida.d/"*; do
+scriptDir="$(dirname "$(realpath "$0")")"
+
+if [ -x "${scriptDir}/.nahida.d" ]; then
+    for file in "${scriptDir}/.nahida.d/"*; do
         [ -r "${file}" ] && . "${file}"
     done
 fi

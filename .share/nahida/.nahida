@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Add the following line in your shell RCs
-# . "${HOME}/dots/nahida/.nahida"
+# . "${HOME}/dots/.share/nahida/.nahida"
 
 case $- in
     *i*) ;;

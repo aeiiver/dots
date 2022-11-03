@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Prompt format helpers:
+# https://scriptim.github.io/bash-prompt-generator/
+# https://zsh-prompt-generator.site/
+
+# zsh andy
+if [ "$(basename "$(readlink /proc/$$/exe)")" = 'zsh' ]; then
+    # can be exported as 'nahida.zsh-theme'
+    PROMPT='%F{11}(%F{14}%n%f@%F{10}%m %F{13}%c%F{11})%f%% '
+    RPROMPT='$(git_prompt_status) $(git_prompt_info)'
+    PROMPT2='> '
+
+    ZSH_THEME_GIT_PROMPT_PREFIX='%F{13}'
+    ZSH_THEME_GIT_PROMPT_SUFFIX=''
+    ZSH_THEME_GIT_PROMPT_DIRTY=''
+    ZSH_THEME_GIT_PROMPT_CLEAN=''
+    ZSH_THEME_GIT_PROMPT_ADDED='%F{9}+'
+    ZSH_THEME_GIT_PROMPT_MODIFIED='%F{11}*'
+    ZSH_THEME_GIT_PROMPT_DELETED='%F{9}-'
+    ZSH_THEME_GIT_PROMPT_RENAMED='%F{5}r'
+    ZSH_THEME_GIT_PROMPT_UNMERGED='%F{1}#'
+    ZSH_THEME_GIT_PROMPT_UNTRACKED='%F{14}!'
+else
+    PS1='\[\e[0;93m\](\[\e[0;96m\]\u\[\e[0m\]@\[\e[0;92m\]\h \[\e[0;95m\]\W\[\e[0;93m\])\[\e[0m\]\$ '
+    PS2='> '
+fi

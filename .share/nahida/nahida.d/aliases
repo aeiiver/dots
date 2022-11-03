@@ -6,19 +6,15 @@ if ls --color 1>/dev/null 2>&1; then
 else
     alias ls='command ls -G'
 fi
-alias ll='ls -lF'
-alias la='ls -laF'
-alias la-='ls -laF | grep --color=never ^-'
-alias lad='ls -laF | grep --color=never ^d'
-alias lal='ls -laF | grep --color=never ^l'
 
 # grep
 alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
 alias egrep='grep -E --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
 alias fgrep='grep -F --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
 
-# utils
-alias lspath='echo $PATH | sed -e 's,:,\n,g' | sort'
+# idk
+alias ip='ip -c'
+alias lspath='echo $PATH | sed -e "s,:,\n,g" | sort'
 
 # shell RCs
 alias bashrc='$EDITOR $HOME/.bashrc'

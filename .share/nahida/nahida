@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Source this file in your shell RCs:
+# . "${HOME}/dots/.share/nahida/nahida"
+
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+NHD_DOTS="${HOME}/dots"
+
+if [ -x "${NHD_DOTS}/.share/nahida/nahida.d" ]; then
+    for file in "${NHD_DOTS}/.share/nahida/nahida.d"/*; do
+        [ -r "${file}" ] && . "${file}"
+    done
+fi
